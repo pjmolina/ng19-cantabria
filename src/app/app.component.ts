@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { UserComponent } from './user/user.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  imports: [UserComponent],
 })
 export class AppComponent {
-  title = 'app0';
+  title = 'Titulo4';
+  seleccionado = '';
+
+  procesarSeleccion(nombre: string): void {
+    this.seleccionado = nombre;
+  }
 }
