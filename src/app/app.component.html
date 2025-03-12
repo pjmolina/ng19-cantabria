@@ -3,8 +3,7 @@
 
 <app-user
   *ngFor="let user of users"
-  [nombre]="user.nombre"
-  [apellido]="user.apellido"
+  [user]="user"
   (seleccionado)="procesarSeleccion($event)"
 >
 </app-user>

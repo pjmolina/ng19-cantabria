@@ -17,22 +17,27 @@ export class AppComponent {
     {
       nombre: 'Ana',
       apellido: 'Garcia',
+      age: 15,
     },
     {
       nombre: 'Matias',
       apellido: 'Garcia',
+      age: 12,
     },
     {
       nombre: 'Pablo',
       apellido: 'Garcia',
+      age: 21,
     },
     {
       nombre: 'Ramón',
       apellido: 'Martinez',
+      age: 45,
     },
     {
       nombre: 'N5',
       apellido: 'Martinez',
+      age: 23,
     },
   ];
 

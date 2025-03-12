@@ -7,34 +7,34 @@ import {
   Output,
 } from '@angular/core';
 import { User } from '../domain/user';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-user',
-  imports: [],
+  imports: [NgIf],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss',
 })
 export class UserComponent implements OnInit, OnDestroy {
-  @Input() nombre: string = '.';
-  @Input() apellido: string = '.';
+  @Input() user?: User;
+
   @Output() seleccionado = new EventEmitter<User>();
 
   constructor() {
-    console.log('Constructor Invocado UserComponent  nombre:' + this.nombre);
+    console.log(
+      'Constructor Invocado UserComponent  nombre:' + this.user?.nombre
+    );
   }
   ngOnDestroy(): void {
     console.log('ngOnDestroy');
   }
   ngOnInit(): void {
-    console.log('ngOnInit desde UserComponent   nombre:' + this.nombre);
+    console.log('ngOnInit desde UserComponent   nombre:' + this.user?.nombre);
   }
 
   selecciona(): void {
-    console.log('Hemos seleccionado a ' + this.nombre);
+    console.log('Hemos seleccionado a ' + this.user?.nombre);
 
-    this.seleccionado.emit({
-      nombre: this.nombre,
-      apellido: this.apellido,
-    });
+    this.seleccionado.emit(this.user!);
   }
 }

@@ -1,5 +1,9 @@
-<div class="user">
-  <span> Nombre: {{ nombre }} </span>
-  <span> Apellido: {{ apellido }} </span>
+<div class="user" *ngIf="user; else noContent">
+  <span> Nombre: {{ user.nombre }} </span>
+  <span> Apellido: {{ user.apellido }} </span>
+  <span [class.adulto]="user.age >= 18" [class.menor]="user.age < 18">
+    Edad: {{ user.age }}
+  </span>
   <button (click)="selecciona()">Seleccionar</button>
 </div>
+<ng-template #noContent> Sin datos de usuario. </ng-template>
