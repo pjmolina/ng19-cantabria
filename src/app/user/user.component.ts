@@ -6,11 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-
-export interface User {
-  nombre: string;
-  apellido: string;
-}
+import { User } from '../domain/user';
 
 @Component({
   selector: 'app-user',

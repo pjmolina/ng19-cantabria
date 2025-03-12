@@ -1,23 +1,18 @@
 <h1>Hola: {{ title }}</h1>
 <p>Parrafo con contenido...</p>
+
 <app-user
-  nombre="Ana"
-  apellido="Pérez"
+  *ngFor="let user of users"
+  [nombre]="user.nombre"
+  [apellido]="user.apellido"
   (seleccionado)="procesarSeleccion($event)"
-></app-user>
-<app-user
-  nombre="Pablo"
-  apellido="Pérez"
-  (seleccionado)="procesarSeleccion($event)"
-></app-user>
-<app-user
-  nombre="Carlota"
-  apellido="Pérez"
-  (seleccionado)="procesarSeleccion($event)"
-></app-user>
-<app-user
-  nombre="Zacarias"
-  apellido="López"
-  (seleccionado)="procesarSeleccion($event)"
-></app-user>
-<p>El usuario seleccionado es: {{ seleccionado }}.</p>
+>
+</app-user>
+
+<p *ngIf="seleccionado; else noSeleccionado">
+  El usuario seleccionado es: {{ seleccionado }}.
+</p>
+
+<ng-template #noSeleccionado
+  ><p>No hay jugador inicial seleccinado.</p></ng-template
+>
