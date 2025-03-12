@@ -8,10 +8,11 @@ import {
 } from '@angular/core';
 import { User } from '../domain/user';
 import { NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
-  imports: [NgIf],
+  imports: [NgIf, FormsModule],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss',
 })

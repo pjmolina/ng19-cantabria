@@ -15,3 +15,10 @@
 <ng-template #noSeleccionado
   ><p>No hay jugador inicial seleccinado.</p></ng-template
 >
+
+<ol>
+  <li *ngFor="let user of users">{{ user.nombre }} {{ user.apellido }}</li>
+</ol>
+<pre>
+  {{ users | json }}
+</pre>
