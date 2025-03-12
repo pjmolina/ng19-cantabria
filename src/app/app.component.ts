@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserComponent } from './user/user.component';
+import { User, UserComponent } from './user/user.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,11 @@ export class AppComponent {
   title = 'Titulo4';
   seleccionado = '';
 
-  procesarSeleccion(nombre: string): void {
-    this.seleccionado = nombre;
+  constructor() {
+    console.log('Constructor Invocado PPal');
+  }
+
+  procesarSeleccion(user: User): void {
+    this.seleccionado = `${user.nombre} ${user.apellido}`;
   }
 }

@@ -1,4 +1,16 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
+
+export interface User {
+  nombre: string;
+  apellido: string;
+}
 
 @Component({
   selector: 'app-user',
@@ -6,14 +18,27 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss',
 })
-export class UserComponent {
-  @Input() nombre: string = '';
-  @Input() apellido: string = '';
-  @Output() seleccionado = new EventEmitter<string>();
+export class UserComponent implements OnInit, OnDestroy {
+  @Input() nombre: string = '.';
+  @Input() apellido: string = '.';
+  @Output() seleccionado = new EventEmitter<User>();
+
+  constructor() {
+    console.log('Constructor Invocado UserComponent  nombre:' + this.nombre);
+  }
+  ngOnDestroy(): void {
+    console.log('ngOnDestroy');
+  }
+  ngOnInit(): void {
+    console.log('ngOnInit desde UserComponent   nombre:' + this.nombre);
+  }
 
   selecciona(): void {
     console.log('Hemos seleccionado a ' + this.nombre);
 
-    this.seleccionado.emit(this.nombre);
+    this.seleccionado.emit({
+      nombre: this.nombre,
+      apellido: this.apellido,
+    });
   }
 }
