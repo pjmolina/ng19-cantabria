@@ -9,6 +9,7 @@
     <li>Short {{ hoy | date : "short" : "Z" : "en-US" }}</li>
     <li>Long {{ hoy | date : "long" : "CEST" : "en" }}</li>
     <li>A medida {{ hoy | date : "dd/MM/yyyy - HH:mm" : "CEST" }}</li>
+    <li>ISO {{ hoy.toISOString() }}</li>
   </ul>
 </div>
 
