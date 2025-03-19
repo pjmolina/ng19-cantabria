@@ -4,6 +4,6 @@
   <span [class.adulto]="user.age >= 18" [class.menor]="user.age < 18">
     Edad: {{ user.age }}
   </span>
-  <button (click)="selecciona()">Seleccionar</button>
+  <button (click)="selecciona($event)">Seleccionar</button>
 </div>
 <ng-template #noContent> Sin datos de usuario. </ng-template>

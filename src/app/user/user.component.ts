@@ -37,7 +37,9 @@ export class UserComponent implements OnInit, OnDestroy {
     );
   }
 
-  selecciona(): void {
+  selecciona(event: MouseEvent): void {
+    console.log(event);
+
     this.logger.log('Hemos seleccionado a ' + this.user?.nombre);
 
     this.seleccionado.emit(this.user!);
