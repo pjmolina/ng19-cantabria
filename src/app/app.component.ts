@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserComponent } from './user/user.component';
 import { DatePipe, JsonPipe, NgFor, NgIf } from '@angular/common';
 import { User } from './domain/user';
@@ -7,6 +7,7 @@ import { ResaltaDirective } from './directives/resalta.directive';
 import { CurrencyPipe } from './pipes/currency.pipe';
 import { FilterByNamePipe } from './pipes/filter-by-name.pipe';
 import { FormsModule } from '@angular/forms';
+import { PlanetService } from './services/planet.service';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,7 @@ import { FormsModule } from '@angular/forms';
   ],
   //providers: [{ provide: LoggerService, useClass: Logger2Service }],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Titulo4';
   seleccionado = '';
   searchText = '';
@@ -64,8 +65,28 @@ export class AppComponent {
     },
   ];
 
-  constructor(private logger: LoggerService) {
+  constructor(
+    private logger: LoggerService,
+    private planetService: PlanetService
+  ) {
     logger.log('Constructor Invocado PPal');
+  }
+
+  ngOnInit(): void {
+    console.log('1');
+
+    this.planetService
+      .getPlanets()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+      .finally(() => {
+        console.log('fin');
+      });
+    console.log('2');
   }
 
   procesarSeleccion(user: User): void {
