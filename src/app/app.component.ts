@@ -2,14 +2,22 @@ import { Component } from '@angular/core';
 import { UserComponent } from './user/user.component';
 import { JsonPipe, NgFor, NgIf } from '@angular/common';
 import { User } from './domain/user';
-import { Logger2Service, LoggerService } from './services/logger.service';
+import { LoggerService } from './services/logger.service';
 import { ResaltaDirective } from './directives/resalta.directive';
+import { CurrencyPipe } from './pipes/currency.pipe';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [UserComponent, NgIf, NgFor, JsonPipe, ResaltaDirective],
+  imports: [
+    UserComponent,
+    NgIf,
+    NgFor,
+    JsonPipe,
+    ResaltaDirective,
+    CurrencyPipe,
+  ],
   //providers: [{ provide: LoggerService, useClass: Logger2Service }],
 })
 export class AppComponent {

@@ -1,6 +1,6 @@
 <div class="user" *ngIf="user; else noContent">
   <span> Nombre: </span><input type="text" [(ngModel)]="user.nombre" />
-  <span> Apellido: {{ user.apellido }} </span>
+  <span> Apellido: {{ user.apellido | uppercase }} </span>
   <span [class.adulto]="user.age >= 18" [class.menor]="user.age < 18">
     Edad: {{ user.age }}
   </span>

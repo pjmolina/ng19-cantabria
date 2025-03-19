@@ -1,6 +1,17 @@
 <h1 appResalta>Hola: {{ title }}</h1>
 <p appResalta="orange" color="darkolive">Parrafo con contenido...</p>
 
+<div>
+  Ejemplos de monedas:
+  <p>
+    {{ 12345.456 | currency : "eur" }}<br />
+    {{ 12345.456 | currency : "USD" }}<br />
+    {{ 12345.456 | currency : "yen" }}<br />
+    {{ 12345.456 | currency }}<br />
+    {{ 12345.456 | currency : "lib" }}<br />
+  </p>
+</div>
+
 <app-user
   *ngFor="let user of users"
   [user]="user"

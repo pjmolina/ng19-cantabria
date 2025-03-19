@@ -7,13 +7,13 @@ import {
   Output,
 } from '@angular/core';
 import { User } from '../domain/user';
-import { NgIf } from '@angular/common';
+import { NgIf, UpperCasePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LoggerService } from '../services/logger.service';
 
 @Component({
   selector: 'app-user',
-  imports: [NgIf, FormsModule],
+  imports: [NgIf, FormsModule, UpperCasePipe],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss',
   //providers: [LoggerService],
