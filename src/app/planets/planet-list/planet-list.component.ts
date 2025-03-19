@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PlanetService } from '../../services/planet.service';
 import { Planet } from '../../domain/planet';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-planet-list',
-  imports: [NgFor, NgIf],
+  imports: [NgFor],
   templateUrl: './planet-list.component.html',
   styleUrl: './planet-list.component.scss',
 })
@@ -26,6 +26,7 @@ export class PlanetListComponent implements OnInit {
       error: (err) => {
         this.planets = [];
         this.error = err.message;
+        this.cargando = false;
       },
       complete: () => {
         this.cargando = false;
