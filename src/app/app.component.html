@@ -12,8 +12,16 @@
   </p>
 </div>
 
+<div class="filter">
+  <label for="search">Búsqueda:</label>
+  <input
+    name="search"
+    placeholder="escriba aqui para filtrar"
+    [(ngModel)]="searchText"
+  />
+</div>
 <app-user
-  *ngFor="let user of users"
+  *ngFor="let user of users | filterByName : searchText"
   [user]="user"
   (seleccionado)="procesarSeleccion($event)"
 >

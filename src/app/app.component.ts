@@ -5,6 +5,8 @@ import { User } from './domain/user';
 import { LoggerService } from './services/logger.service';
 import { ResaltaDirective } from './directives/resalta.directive';
 import { CurrencyPipe } from './pipes/currency.pipe';
+import { FilterByNamePipe } from './pipes/filter-by-name.pipe';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -17,18 +19,26 @@ import { CurrencyPipe } from './pipes/currency.pipe';
     JsonPipe,
     ResaltaDirective,
     CurrencyPipe,
+    FilterByNamePipe,
+    FormsModule,
   ],
   //providers: [{ provide: LoggerService, useClass: Logger2Service }],
 })
 export class AppComponent {
   title = 'Titulo4';
   seleccionado = '';
+  searchText = '';
 
   users: User[] = [
     {
       nombre: 'Ana',
       apellido: 'Garcia',
       age: 15,
+    },
+    {
+      nombre: 'Ana',
+      apellido: 'Perez',
+      age: 17,
     },
     {
       nombre: 'Matias',
