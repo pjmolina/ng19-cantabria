@@ -1,0 +1,14 @@
+<div *ngIf="cargando">
+  <img src="/spinner.gif" alt="cargando..." />
+</div>
+<div *ngIf="!cargando">
+  <h1>Planetas</h1>
+  <div class="planet" *ngFor="let planet of planets">
+    <div class="name">{{ planet.name }}</div>
+    <div>Clima: {{ planet.climate }}</div>
+    <div>Población: {{ planet.population }}</div>
+  </div>
+  <div *ngIf="error" class="error">
+    {{ error }}
+  </div>
+</div>

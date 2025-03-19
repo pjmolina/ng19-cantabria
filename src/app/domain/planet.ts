@@ -1,7 +1,7 @@
 /** Entidad en la aplicacion */
 export interface Planet {
   name: string;
-  population: number;
+  population: number | null;
   diameter: number;
   climate: string;
   residents: string[];

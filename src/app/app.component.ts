@@ -8,6 +8,7 @@ import { CurrencyPipe } from './pipes/currency.pipe';
 import { FilterByNamePipe } from './pipes/filter-by-name.pipe';
 import { FormsModule } from '@angular/forms';
 import { PlanetService } from './services/planet.service';
+import { PlanetListComponent } from './planets/planet-list/planet-list.component';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +24,7 @@ import { PlanetService } from './services/planet.service';
     FilterByNamePipe,
     FormsModule,
     DatePipe,
+    PlanetListComponent,
   ],
   //providers: [{ provide: LoggerService, useClass: Logger2Service }],
 })
@@ -72,20 +74,40 @@ export class AppComponent implements OnInit {
     logger.log('Constructor Invocado PPal');
   }
 
+  //Version con promesas
+  // ngOnInit(): void {
+  //   console.log('1');
+
+  //   this.planetService
+  //     .getPlanetsWithPromise()
+  //     .then((data) => {
+  //       console.log(data);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     })
+  //     .finally(() => {
+  //       console.log('fin');
+  //     });
+  //   console.log('2');
+  // }
+
+  // Version con observables
   ngOnInit(): void {
     console.log('1');
 
-    this.planetService
-      .getPlanets()
-      .then((data) => {
+    this.planetService.getPlanets().subscribe({
+      next: (data) => {
         console.log(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-      .finally(() => {
+      },
+      error: (err) => {
+        console.error(err);
+      },
+      complete: () => {
         console.log('fin');
-      });
+      },
+    });
+
     console.log('2');
   }
 

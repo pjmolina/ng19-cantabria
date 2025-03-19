@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Planet, PlanetDto, Page } from '../domain/planet';
-import { map } from 'rxjs';
+import { delay, map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +9,17 @@ import { map } from 'rxjs';
 export class PlanetService {
   constructor(private http: HttpClient) {}
 
-  getPlanets(): Promise<Planet[] | undefined> {
-    const url = 'https://noexiste.swapi.dev/api/planets/?page=1';
+  getPlanets(): Observable<Planet[]> {
+    const url = 'https://swapi.dev/api/planets/?page=1';
+    return this.http.get<Page<PlanetDto>>(url).pipe(
+      map((page) => {
+        return page.results.map((p) => convertFromDto(p)) || [];
+      })
+      // delay(3000)
+    );
+  }
+  getPlanetsWithPromise(): Promise<Planet[] | undefined> {
+    const url = 'https://swapi.dev/api/planets/?page=1';
     return this.http
       .get<Page<PlanetDto>>(url)
       .pipe(
@@ -34,6 +43,6 @@ const convertFromDto = (p: PlanetDto): Planet => {
     created: new Date(p.created),
     edited: new Date(p.edited),
     diameter: parseInt(p.diameter, 10),
-    population: +p.population,
+    population: p.population === 'unknown' ? null : +p.population,
   } as Planet;
 };
