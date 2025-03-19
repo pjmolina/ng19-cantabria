@@ -1,0 +1,21 @@
+{
+  "name": "webserver",
+  "version": "1.0.0",
+  "description": "un webserver",
+  "license": "ISC",
+  "author": "pjmolina",
+  "type": "commonjs",
+  "main": "webserver.js",
+  "scripts": {
+    "install": "kdlaskdlkasl",
+    "build": "tsc ...",
+    "lint": "tsc ...",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.20.0"
+  },
+  "devDependencies": {
+    "cypress": "^4.21.2"
+  }
+}
