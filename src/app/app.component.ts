@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserComponent } from './user/user.component';
-import { JsonPipe, NgFor, NgIf } from '@angular/common';
+import { DatePipe, JsonPipe, NgFor, NgIf } from '@angular/common';
 import { User } from './domain/user';
 import { LoggerService } from './services/logger.service';
 import { ResaltaDirective } from './directives/resalta.directive';
@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     CurrencyPipe,
     FilterByNamePipe,
     FormsModule,
+    DatePipe,
   ],
   //providers: [{ provide: LoggerService, useClass: Logger2Service }],
 })
@@ -28,6 +29,7 @@ export class AppComponent {
   title = 'Titulo4';
   seleccionado = '';
   searchText = '';
+  hoy = new Date();
 
   users: User[] = [
     {

@@ -2,6 +2,17 @@
 <p appResalta="orange" color="darkolive">Parrafo con contenido...</p>
 
 <div>
+  Ejemplo de fechas:
+  <ul>
+    <li>Sin el pipe: {{ hoy }}</li>
+    <li>{{ hoy | date }}</li>
+    <li>Short {{ hoy | date : "short" : "Z" : "en-US" }}</li>
+    <li>Long {{ hoy | date : "long" : "CEST" : "en" }}</li>
+    <li>A medida {{ hoy | date : "dd/MM/yyyy - HH:mm" : "CEST" }}</li>
+  </ul>
+</div>
+
+<div>
   Ejemplos de monedas:
   <p>
     {{ 12345.456 | currency : "eur" }}<br />
