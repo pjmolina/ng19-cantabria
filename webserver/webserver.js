@@ -1,11 +1,18 @@
 var express = require("express");
+var cors = require("cors");
 var app = express();
 
-app.get("/", function (req, res) {
+var corsOptions = {
+  origin: "http://localhost:4200",
+};
+
+// app.use(cors(corsOptions));
+
+app.get("/", cors(corsOptions), function (req, res) {
   res.send("hello world");
 });
 
-app.get("/pizzas", function (req, res) {
+app.get("/pizzas", cors(corsOptions), function (req, res) {
   res.json([
     { name: "margarita", price: 12 },
     { name: "piña", price: 13 },
@@ -15,3 +22,7 @@ app.get("/pizzas", function (req, res) {
 
 console.log("Escuchando en el puerto 3000");
 app.listen(3000);
+
+// CORS
+// http://localhost:4200
+// http://localhost:3000
