@@ -1,4 +1,19 @@
-<h1 appResalta>Hola: {{ title }}</h1>
+<header>
+  LOGO. Titulo
+  <nav>
+    <a [routerLink]="['/']">Inicio</a> |
+    <a [routerLink]="['/planetas']">Planetas</a> |
+    <a [routerLink]="['/planetas/1']">Planeta 1</a> |
+    <a [routerLink]="['/planetas/2']">Planeta 2</a> |
+    <a [routerLink]="['/no-existe']">Esto no existe</a>
+  </nav>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<footer>&copy; ACME 2025.</footer>
+
+<!-- <h1 appResalta>Hola: {{ title }}</h1>
 <p appResalta="orange" color="darkolive">Parrafo con contenido...</p>
 
 <app-planet-list></app-planet-list>
@@ -54,4 +69,4 @@
 </ol>
 <pre>
   {{ users | json }}
-</pre>
+</pre> -->

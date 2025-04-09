@@ -26,3 +26,10 @@ http -> 80
 https -> 443
 
 Contexto de seguridad
+
+## Navegación
+
+- / - welcome
+- /planetas - PlanetsComponent
+- /planetas/:id PlanetDetailComponent  (permalink)
+- **            NotFoundComponent
