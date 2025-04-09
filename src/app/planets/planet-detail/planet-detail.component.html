@@ -1,2 +1,20 @@
 <h1>Planeta</h1>
-<p>planet-detail works!</p>
+<div *ngIf="planet">
+  <div>
+    <span>Nombre:</span><span>{{ planet.name }}</span>
+  </div>
+  <div>
+    <span>Clima:</span><span>{{ planet.climate }}</span>
+  </div>
+  <div>
+    <span>Poblacion:</span><span>{{ planet.population }}</span>
+  </div>
+  <div>
+    <span>Diametro:</span><span>{{ planet.diameter }}</span>
+  </div>
+</div>
+<div *ngIf="!planet">
+  <div *ngIf="loading">Cargando...</div>
+  <div *ngIf="!loading">Sin datos</div>
+</div>
+<div *ngIf="error">ERROR: {{ error }}</div>

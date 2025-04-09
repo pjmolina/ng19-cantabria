@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { PlanetService } from '../../services/planet.service';
 import { Planet } from '../../domain/planet';
 import { NgFor } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-planet-list',
-  imports: [NgFor],
+  imports: [NgFor, RouterModule],
   templateUrl: './planet-list.component.html',
   styleUrl: './planet-list.component.scss',
 })
@@ -14,7 +15,7 @@ export class PlanetListComponent implements OnInit {
   error = '';
   cargando = false;
 
-  constructor(private planetService: PlanetService) {}
+  constructor(private planetService: PlanetService, private router: Router) {}
 
   ngOnInit(): void {
     this.cargando = true;
@@ -32,5 +33,8 @@ export class PlanetListComponent implements OnInit {
         this.cargando = false;
       },
     });
+  }
+  gotoInicio(): void {
+    void this.router.navigate(['']);
   }
 }

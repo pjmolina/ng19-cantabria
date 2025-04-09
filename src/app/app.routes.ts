@@ -6,7 +6,17 @@ import { PlanetDetailComponent } from './planets/planet-detail/planet-detail.com
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent },
-  { path: 'planetas', component: PlanetListComponent },
-  { path: 'planetas/:id', component: PlanetDetailComponent },
+  {
+    path: 'planetas',
+    children: [
+      { path: '', component: PlanetListComponent },
+
+      { path: ':id', component: PlanetDetailComponent },
+    ],
+  },
   { path: '**', component: NotFoundComponent },
+];
+
+export const rutasHijas: Routes = [
+  { path: 'detalle/:id', component: PlanetDetailComponent },
 ];

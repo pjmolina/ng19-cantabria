@@ -1,11 +1,20 @@
 <header>
   LOGO. Titulo
   <nav>
-    <a [routerLink]="['/']">Inicio</a> |
-    <a [routerLink]="['/planetas']">Planetas</a> |
-    <a [routerLink]="['/planetas/1']">Planeta 1</a> |
-    <a [routerLink]="['/planetas/2']">Planeta 2</a> |
-    <a [routerLink]="['/no-existe']">Esto no existe</a>
+    <a [routerLink]="['/']" routerLinkActive="seleccionado">Inicio</a> |
+    <a [routerLink]="['/planetas']" routerLinkActive="seleccionado">Planetas</a>
+    |
+    <a [routerLink]="['/planetas/1']" routerLinkActive="seleccionado"
+      >Planeta 1</a
+    >
+    |
+    <a [routerLink]="['/planetas/2']" routerLinkActive="seleccionado"
+      >Planeta 2</a
+    >
+    |
+    <a [routerLink]="['/no-existe']" routerLinkActive="seleccionado"
+      >Esto no existe</a
+    >
   </nav>
 </header>
 <main>

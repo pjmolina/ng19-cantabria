@@ -1,5 +1,6 @@
 /** Entidad en la aplicacion */
 export interface Planet {
+  id: string;
   name: string;
   population: number | null;
   diameter: number;

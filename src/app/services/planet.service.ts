@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Planet, PlanetDto, Page } from '../domain/planet';
-import { map, Observable, skip, take } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +28,15 @@ export class PlanetService {
       )
       .toPromise();
   }
+
+  getPlanet(id: string): Observable<Planet> {
+    const url = `https://swapi.dev/api/planets/${encodeURIComponent(id)}`;
+    return this.http.get<PlanetDto>(url).pipe(
+      map((planet) => {
+        return convertFromDto(planet);
+      })
+    );
+  }
 }
 
 const convertFromDto = (p: PlanetDto): Planet => {
@@ -38,12 +47,21 @@ const convertFromDto = (p: PlanetDto): Planet => {
     // films: p.films,
     // residents: p.residents,
     // url: p.url,
-
+    id: extractId(p.url),
     created: new Date(p.created),
     edited: new Date(p.edited),
     diameter: parseInt(p.diameter, 10),
     population: p.population === 'unknown' ? null : +p.population,
   } as Planet;
+};
+
+// https://swapi.dev/api/planets/1/
+const extractId = (url: string): string => {
+  // v1 texto
+  const base = url.endsWith('/') ? url.substring(0, url.length - 1) : url;
+  const part = base.split('/');
+  const res = part[part.length - 1];
+  return res;
 };
 
 //  const sub = observable.pipe(
