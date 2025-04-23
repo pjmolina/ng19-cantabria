@@ -1,1 +1,6 @@
 <h1>Bienvenidos</h1>
+
+Numeros: <input type="text" [(ngModel)]="n" />
+<button (click)="calcular()">Calcular fib({{ n }})</button>
+Fibonacci: {{ resultado }}<br />
+Estado: {{ mensaje }}
