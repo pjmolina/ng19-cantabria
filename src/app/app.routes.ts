@@ -3,11 +3,15 @@ import { PlanetListComponent } from './planets/planet-list/planet-list.component
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PlanetDetailComponent } from './planets/planet-detail/planet-detail.component';
-import { EjemploComponent } from './ejemplo/ejemplo.component';
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent },
-  { path: 'ejemplo', component: EjemploComponent },
+  // { path: 'ejemplo', component: EjemploComponent },
+  {
+    path: 'ejemplo',
+    loadChildren: () =>
+      import('./ejemplo/ejemplo.module').then((m) => m.EjemploModule)
+  },
   {
     path: 'planetas',
     children: [
