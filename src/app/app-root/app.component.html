@@ -2,7 +2,13 @@
   LOGO. Titulo
   <nav>
     <a [routerLink]="['/']" routerLinkActive="seleccionado">Inicio</a> |
-    <a [routerLink]="['/ejemplo']" routerLinkActive="seleccionado">Ejemplo</a> |
+    <a
+      *ngIf="feature3"
+      [routerLink]="['/ejemplo']"
+      routerLinkActive="seleccionado"
+      >Ejemplo</a
+    >
+    <span *ngIf="feature3">|</span>
     <a [routerLink]="['/planetas']" routerLinkActive="seleccionado">Planetas</a>
     |
     <a [routerLink]="['/planetas/1']" routerLinkActive="seleccionado"
@@ -16,6 +22,8 @@
     <a [routerLink]="['/no-existe']" routerLinkActive="seleccionado"
       >Esto no existe</a
     >
+    |
+    <a [routerLink]="['/admin']" routerLinkActive="seleccionado">Admin</a>
   </nav>
 </header>
 <main>

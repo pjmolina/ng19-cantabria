@@ -4,12 +4,14 @@ import { LoggerService } from '../services/logger.service';
 import { FormsModule } from '@angular/forms';
 import { PlanetService } from '../services/planet.service';
 import { RouterModule } from '@angular/router';
+import { conf } from '../environments/environment';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [FormsModule, RouterModule],
+  imports: [FormsModule, RouterModule, NgIf]
   //providers: [{ provide: LoggerService, useClass: Logger2Service }],
 })
 export class AppComponent implements OnInit {
@@ -17,38 +19,39 @@ export class AppComponent implements OnInit {
   seleccionado = '';
   searchText = '';
   hoy = new Date();
+  feature3 = conf.feature3;
 
   users: User[] = [
     {
       nombre: 'Ana',
       apellido: 'Garcia',
-      age: 15,
+      age: 15
     },
     {
       nombre: 'Ana',
       apellido: 'Perez',
-      age: 17,
+      age: 17
     },
     {
       nombre: 'Matias',
       apellido: 'Garcia',
-      age: 12,
+      age: 12
     },
     {
       nombre: 'Pablo',
       apellido: 'Garcia',
-      age: 21,
+      age: 21
     },
     {
       nombre: 'Ramón',
       apellido: 'Martinez',
-      age: 45,
+      age: 45
     },
     {
       nombre: 'N5',
       apellido: 'Martinez',
-      age: 23,
-    },
+      age: 23
+    }
   ];
 
   constructor(
@@ -89,7 +92,7 @@ export class AppComponent implements OnInit {
       },
       complete: () => {
         console.log('fin');
-      },
+      }
     });
 
     console.log('2');
