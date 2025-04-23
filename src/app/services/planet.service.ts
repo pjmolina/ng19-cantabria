@@ -2,15 +2,18 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Planet, PlanetDto, Page } from '../domain/planet';
 import { map, Observable } from 'rxjs';
+import { conf } from '../environments/environment';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class PlanetService {
+  urlBase = conf.baseUrl;
+
   constructor(private http: HttpClient) {}
 
   getPlanets(): Observable<Planet[]> {
-    const url = 'https://swapi.dev/api/planets/?page=1';
+    const url = `${this.urlBase}/api/planets/?page=1`;
     return this.http.get<Page<PlanetDto>>(url).pipe(
       map((page) => {
         return page.results.map((p) => convertFromDto(p)) || [];
@@ -18,7 +21,7 @@ export class PlanetService {
     );
   }
   getPlanetsWithPromise(): Promise<Planet[] | undefined> {
-    const url = 'https://swapi.dev/api/planets/?page=1';
+    const url = `${this.urlBase}/api/planets/?page=1`;
     return this.http
       .get<Page<PlanetDto>>(url)
       .pipe(
@@ -30,7 +33,7 @@ export class PlanetService {
   }
 
   getPlanet(id: string): Observable<Planet> {
-    const url = `https://swapi.dev/api/planets/${encodeURIComponent(id)}`;
+    const url = `${this.urlBase}/api/planets/${encodeURIComponent(id)}`;
     return this.http.get<PlanetDto>(url).pipe(
       map((planet) => {
         return convertFromDto(planet);
@@ -51,7 +54,7 @@ const convertFromDto = (p: PlanetDto): Planet => {
     created: new Date(p.created),
     edited: new Date(p.edited),
     diameter: parseInt(p.diameter, 10),
-    population: p.population === 'unknown' ? null : +p.population,
+    population: p.population === 'unknown' ? null : +p.population
   } as Planet;
 };
 

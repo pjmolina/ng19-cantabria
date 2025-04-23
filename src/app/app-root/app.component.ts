@@ -1,33 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { UserComponent } from '../user/user.component';
-import { DatePipe, JsonPipe, NgFor, NgIf } from '@angular/common';
 import { User } from '../domain/user';
 import { LoggerService } from '../services/logger.service';
-import { ResaltaDirective } from '../directives/resalta.directive';
-import { CurrencyPipe } from '../pipes/currency.pipe';
-import { FilterByNamePipe } from '../pipes/filter-by-name.pipe';
 import { FormsModule } from '@angular/forms';
 import { PlanetService } from '../services/planet.service';
-import { PlanetListComponent } from '../planets/planet-list/planet-list.component';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [
-    UserComponent,
-    NgIf,
-    NgFor,
-    JsonPipe,
-    ResaltaDirective,
-    CurrencyPipe,
-    FilterByNamePipe,
-    FormsModule,
-    DatePipe,
-    PlanetListComponent,
-    RouterModule,
-  ],
+  imports: [FormsModule, RouterModule],
   //providers: [{ provide: LoggerService, useClass: Logger2Service }],
 })
 export class AppComponent implements OnInit {
