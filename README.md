@@ -33,3 +33,9 @@ Contexto de seguridad
 - /planetas - PlanetsComponent
 - /planetas/:id PlanetDetailComponent  (permalink)
 - **            NotFoundComponent
+
+## Roles
+
+- Admin
+- Operador
+- Auditor

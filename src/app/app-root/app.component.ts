@@ -6,12 +6,13 @@ import { PlanetService } from '../services/planet.service';
 import { RouterModule } from '@angular/router';
 import { conf } from '../environments/environment';
 import { NgIf } from '@angular/common';
+import { AutorizadosDirective } from '../directives/autorizados.directive';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [FormsModule, RouterModule, NgIf]
+  imports: [FormsModule, RouterModule, NgIf, AutorizadosDirective]
   //providers: [{ provide: LoggerService, useClass: Logger2Service }],
 })
 export class AppComponent implements OnInit {

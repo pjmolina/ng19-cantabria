@@ -3,7 +3,8 @@
   <nav>
     <a [routerLink]="['/']" routerLinkActive="seleccionado">Inicio</a> |
     <a
-      *ngIf="feature3"
+      *appAutorizados
+      roles="admin,auditor"
       [routerLink]="['/ejemplo']"
       routerLinkActive="seleccionado"
       >Ejemplo</a
