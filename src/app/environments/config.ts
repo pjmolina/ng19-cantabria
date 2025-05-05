@@ -1,6 +1,6 @@
 export interface Config {
-  env: string;
-  baseUrl: string;
+  env: 'local' | 'pro';
+  baseUrl: string; // window.origin /api/*
   debug: boolean;
   featurePlanets: boolean;
   feature2: boolean;
